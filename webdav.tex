@@ -1,0 +1,268 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (	/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\title[Webdav]{WebDav \& davfs2 } % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Vladislav Bobko} % Your name
+\institute[FIT CVUT] 
+{
+Ceske Vysoke Uceni Technicke \\ % Your institution for the title page
+\medskip
+\textit{bobkovla@fitcvut.cz} % Your email address
+}
+\date{ January 5, 2019} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{WEBDAV} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+\subsection{Zakladni Informace} % 
+%------------------------------------------------------------------------------------------------
+% PRVNI SLIDE - OBECNE INFO O WEBDAVU
+\begin{frame}
+\frametitle{ZAKLADNI INFORMACE }
+    \begin{itemize}
+        \item WEBDAV = Web Distributed Authoring and Versioning
+        \item rozsireni HTTP protokolu
+        \item Motivace - napr. zakaz FTP, proxy, autentifikace ...
+        \item Verzovani - mozne pomoci Delta-V extension
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+% DRUHY SLIDE - MOZNE OPERACE
+\subsection{Mozne operace}
+%------------------------------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{MOZNE OPERACE}
+Krome zakladnich prikazu obsahuje navic:
+    \begin{itemize}
+        \item COPY
+        \item MKCOL (= mkdir )
+        \item MOVE
+        \item PROPFIND
+        \item PROPPATCH
+        \item LOCK
+        \item UNLOCK
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+% DRUHY SLIDE - MOZNE OPERACE
+\subsection{Stavove kody}
+%------------------------------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{STAVOVE KODY}
+WebDav zavadi nektere nove stavy:
+    \begin{itemize}
+        \item 207 Multi-Status
+        \item 422 Unprocessable Entity
+        \item 423 Locked
+        \item 424 Failed Dependency
+        \item 507 Insufficient Storage
+    \end{itemize}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+% TRETI SLIDE - DOTAZ KLIENTA - 1
+\subsection{Priklad - dotaz klienta}
+%------------------------------------------------------------------------------------------------
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{DOTAZ KLIENTA}
+\begin{example}[Dotaz klienta - 1]
+\begin{verbatim}
+PROPPATCH /WebDavDocs/webdav-xml.htm HTTP/1.1
+Host: myserver.com
+Content-Type: text/xml
+Content-Length: 138
+   \end{verbatim}
+\end{example}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+% CTVRTY SLIDE - DOTAZ KLIENTA - 2
+%------------------------------------------------------------------------------------------------
+
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{DOTAZ KLIENTA}
+\begin{example}[Dotaz klienta - 2]
+\begin{verbatim}
+<?xml version="1.0">
+<d:propertyupdate xmlns:d="DAV:" xmlns:o="urn:schemas-
+microsoft-com:office:office">
+   <d:set>
+      <d:prop>
+         <o:Author>Sean Purcell</o:Author>
+      </d:prop>
+   </d:set>
+</d:propertyupdate>
+   \end{verbatim}
+\end{example}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+% PATY SLIDE - ODPOVED SERVERU - 1
+\subsection{Priklad - odpoved serveru}
+%------------------------------------------------------------------------------------------------
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{ODPOVED SERVERU}
+\begin{example}[Odpoved serveru - 1]
+\begin{verbatim}
+HTTP/1.1 207 Multi-Status
+Server: Microsoft-IIS/5.0
+Date: Wed, 04 Aug 1999 21:52:58 GMT
+Content-Type: text/xml
+Content-Length: 310
+   \end{verbatim}
+\end{example}
+\end{frame}
+%------------------------------------------------------------------------------------------------
+% SESTY SLIDE - ODPOVED SERVERU - 2
+%------------------------------------------------------------------------------------------------
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+\frametitle{ODPOVED SERVERU}
+\begin{example}[Odpoved serveru - 2]
+\begin{verbatim}
+<?xml version="1.0"?>
+<a:multistatus xmlns:b="urn:schemas-microsoft-com:office" 
+xmlns:a="DAV:">
+  <a:response>
+  <a:href>http://myserver.com/webdav/webdav-xml.htm</a:href>
+      <a:propstat>
+         <a:status>HTTP/1.1 200 OK</a:status>
+         <a:prop>
+            <b:Author/>
+         </a:prop>
+      </a:propstat>
+   </a:response>
+</a:multistatus>
+   \end{verbatim}
+\end{example}
+\end{frame}
+%------------------------------------------------
+\section{davfs2}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{davfs2}
+\begin{itemize}
+    \item{Linuxovy nastroj pro mount WebDav zdroju}
+    \item Open-Source 
+    \item{https://savannah.nongnu.org/projects/davfs2} 
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Zdroje}
+    \begin{itemize}
+        \item https://en.wikipedia.org/wiki/WebDAV
+        \item https://wiki.archlinux.org/index.php/Davfs2
+        \item http://savannah.nongnu.org/projects/davfs2
+        \item http://www.webdav.org/
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Konec}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
