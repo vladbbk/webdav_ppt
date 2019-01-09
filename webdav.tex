@@ -1,119 +1,66 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---------------------------------------
 % Beamer Presentation
 % LaTeX Template
 % Version 1.0 (10/11/12)
 %
 % This template has been downloaded from:
 % http://www.LaTeXTemplates.com
+% ---------------------------------------
+% For FIT CTU presentatnion created by
+% VLADISLAV BOBKO, 5th January, 2019
 %
 % License:
-% CC BY-NC-SA 3.0 (	/)
+% CC BY-NC-SA 3.0 (     /)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND THEMES
-%----------------------------------------------------------------------------------------
-
 \documentclass{beamer}
 
-\mode<presentation> {
-
-% The Beamer class comes with a number of default slide themes
-% which change the colors and layouts of slides. Below this is a list
-% of all the themes, uncomment each in turn to see what they look like.
-
-%\usetheme{default}
-%\usetheme{AnnArbor}
-%\usetheme{Antibes}
-%\usetheme{Bergen}
-%\usetheme{Berkeley}
-%\usetheme{Berlin}
-%\usetheme{Boadilla}
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Darmstadt}
-%\usetheme{Dresden}
-%\usetheme{Frankfurt}
-%\usetheme{Goettingen}
-%\usetheme{Hannover}
-%\usetheme{Ilmenau}
-%\usetheme{JuanLesPins}
-%\usetheme{Luebeck}
-\usetheme{Madrid}
-%\usetheme{Malmoe}
-%\usetheme{Marburg}
-%\usetheme{Montpellier}
-%\usetheme{PaloAlto}
-%\usetheme{Pittsburgh}
-%\usetheme{Rochester}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
-%\usetheme{Warsaw}
-
-% As well as themes, the Beamer class has a number of color themes
-% for any slide theme. Uncomment each of these in turn to see how it
-% changes the colors of your current slide theme.
-
-%\usecolortheme{albatross}
-%\usecolortheme{beaver}
-%\usecolortheme{beetle}
-%\usecolortheme{crane}
-%\usecolortheme{dolphin}
-%\usecolortheme{dove}
-%\usecolortheme{fly}
-%\usecolortheme{lily}
-%\usecolortheme{orchid}
-%\usecolortheme{rose}
-%\usecolortheme{seagull}
-%\usecolortheme{seahorse}
-%\usecolortheme{whale}
-%\usecolortheme{wolverine}
-
-%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
-%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
-
-%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+\mode<presentation>
+{
+        \usetheme{Madrid}
 }
 
 \usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in                                                                                                                                tables
 
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
-\title[Webdav]{WebDav \& davfs2 } % The short title appears at the bottom of every slide, the full title is only on the title page
+%-------------------------------------------------------------------------------                                                                                                                               ---------
+%       TITLE PAGE
+%-------------------------------------------------------------------------------                                                                                                                               ---------
+\title[Webdav]{WebDav \& davfs2 }
 
-\author{Vladislav Bobko} % Your name
-\institute[FIT CVUT] 
+\author{Vladislav Bobko}
+\institute[FIT CVUT]
 {
-Ceske Vysoke Uceni Technicke \\ % Your institution for the title page
-\medskip
-\textit{bobkovla@fitcvut.cz} % Your email address
+        Ceske Vysoke Uceni Technicke \\
+        \medskip
+        \textit{bobkovla@fitcvut.cz}
 }
-\date{ January 5, 2019} % Date, can be changed to a custom date
+\date{January 5, 2019}
 
 \begin{document}
 
+
 \begin{frame}
-\titlepage % Print the title page as the first slide
+\titlepage
 \end{frame}
 
 \begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\frametitle{Overview}
+\tableofcontents
 \end{frame}
 
-%----------------------------------------------------------------------------------------
-%	PRESENTATION SLIDES
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               ---------
+%       PRESENTATION SLIDES
+%-------------------------------------------------------------------------------                                                                                                                               ---------
 
-%------------------------------------------------
-\section{WEBDAV} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
-%------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+\section{WEBDAV}
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 
-\subsection{Zakladni Informace} % 
-%------------------------------------------------------------------------------------------------
+\subsection{Zakladni Informace} %
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 % PRVNI SLIDE - OBECNE INFO O WEBDAVU
 \begin{frame}
 \frametitle{ZAKLADNI INFORMACE }
@@ -124,11 +71,11 @@ Ceske Vysoke Uceni Technicke \\ % Your institution for the title page
         \item Verzovani - mozne pomoci Delta-V extension
     \end{itemize}
 \end{frame}
-%------------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+
 % DRUHY SLIDE - MOZNE OPERACE
 \subsection{Mozne operace}
-%------------------------------------------------------------------------------------------------
-
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 \begin{frame}
     \frametitle{MOZNE OPERACE}
 Krome zakladnich prikazu obsahuje navic:
@@ -142,11 +89,11 @@ Krome zakladnich prikazu obsahuje navic:
         \item UNLOCK
     \end{itemize}
 \end{frame}
-%------------------------------------------------------------------------------------------------
-% DRUHY SLIDE - MOZNE OPERACE
-\subsection{Stavove kody}
-%------------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 
+% TRETI SLIDE - MOZNE OPERACE
+\subsection{Stavove kody}
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 \begin{frame}
     \frametitle{STAVOVE KODY}
 WebDav zavadi nektere nove stavy:
@@ -158,11 +105,11 @@ WebDav zavadi nektere nove stavy:
         \item 507 Insufficient Storage
     \end{itemize}
 \end{frame}
-%------------------------------------------------------------------------------------------------
-% TRETI SLIDE - DOTAZ KLIENTA - 1
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+% CTVRTY SLIDE - DOTAZ KLIENTA - 1
 \subsection{Priklad - dotaz klienta}
-%------------------------------------------------------------------------------------------------
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in                                                                                                                                the slide
 \frametitle{DOTAZ KLIENTA}
 \begin{example}[Dotaz klienta - 1]
 \begin{verbatim}
@@ -173,11 +120,11 @@ Content-Length: 138
    \end{verbatim}
 \end{example}
 \end{frame}
-%------------------------------------------------------------------------------------------------
-% CTVRTY SLIDE - DOTAZ KLIENTA - 2
-%------------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+% PATY SLIDE - DOTAZ KLIENTA - 2
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+\begin{frame}[fragile]
 \frametitle{DOTAZ KLIENTA}
 \begin{example}[Dotaz klienta - 2]
 \begin{verbatim}
@@ -193,11 +140,11 @@ microsoft-com:office:office">
    \end{verbatim}
 \end{example}
 \end{frame}
-%------------------------------------------------------------------------------------------------
-% PATY SLIDE - ODPOVED SERVERU - 1
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+% SESTY SLIDE - ODPOVED SERVERU - 1
 \subsection{Priklad - odpoved serveru}
-%------------------------------------------------------------------------------------------------
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+\begin{frame}[fragile]
 \frametitle{ODPOVED SERVERU}
 \begin{example}[Odpoved serveru - 1]
 \begin{verbatim}
@@ -209,15 +156,15 @@ Content-Length: 310
    \end{verbatim}
 \end{example}
 \end{frame}
-%------------------------------------------------------------------------------------------------
-% SESTY SLIDE - ODPOVED SERVERU - 2
-%------------------------------------------------------------------------------------------------
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+% SEDMY SLIDE - ODPOVED SERVERU - 2
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+\begin{frame}[fragile]
 \frametitle{ODPOVED SERVERU}
 \begin{example}[Odpoved serveru - 2]
 \begin{verbatim}
 <?xml version="1.0"?>
-<a:multistatus xmlns:b="urn:schemas-microsoft-com:office" 
+<a:multistatus xmlns:b="urn:schemas-microsoft-com:office"
 xmlns:a="DAV:">
   <a:response>
   <a:href>http://myserver.com/webdav/webdav-xml.htm</a:href>
@@ -232,21 +179,23 @@ xmlns:a="DAV:">
    \end{verbatim}
 \end{example}
 \end{frame}
-%------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 \section{davfs2}
-%------------------------------------------------
-
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
+% OSMY SLIDE - OVERVIEW DAFS2
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 \begin{frame}
 \frametitle{davfs2}
 \begin{itemize}
     \item{Linuxovy nastroj pro mount WebDav zdroju}
-    \item Open-Source 
-    \item{https://savannah.nongnu.org/projects/davfs2} 
+    \item Open-Source
+    \item{https://savannah.nongnu.org/projects/davfs2}
 \end{itemize}
 \end{frame}
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 
-%------------------------------------------------
-
+% DEVATY SLIDE - POUZITE ZDROJE
+%-------------------------------------------------------------------------------                                                                                                                               -----------------
 \begin{frame}
 \frametitle{Zdroje}
     \begin{itemize}
@@ -263,6 +212,6 @@ xmlns:a="DAV:">
 \Huge{\centerline{Konec}}
 \end{frame}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------                                                                                                                               ---------
 
 \end{document}
